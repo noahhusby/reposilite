@@ -23,5 +23,7 @@ FROM openjdk:16-slim
 WORKDIR /app
 RUN mkdir -p /app/data
 VOLUME /app/data
+EXPOSE 80/udp
+EXPOSE 80/tcp
 COPY --from=build /home/reposilite-build/reposilite-backend/build/libs/*.jar ./reposilite.jar
 ENTRYPOINT exec java $JAVA_OPTS -jar reposilite.jar -wd=/app/data $REPOSILITE_OPTS
